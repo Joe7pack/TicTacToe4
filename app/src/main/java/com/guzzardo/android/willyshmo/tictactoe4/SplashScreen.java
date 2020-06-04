@@ -51,22 +51,21 @@ public class SplashScreen extends Activity implements ToastMessage {
     public static ErrorHandler mErrorHandler;
     private static Resources mResources;
 
-    private ProgressBar pgsBar;
+    //private ProgressBar pgsBar;
     private int i = 0;
-    private TextView txtView;
-    public Handler threadHandler  = new Handler();
-    private int progressIndex = 0;
+    //private TextView txtView;
+    //public Handler threadHandler  = new Handler();
+    //private int progressIndex = 0;
 
-    HandlerThread handlerThread;
-    private Looper looper;
-    private Handler looperHandler;
+    //andlerThread handlerThread;
+    //rivate Looper looper;
+    //private Handler looperHandler;
     final int SOMETHING_ACTION = 0;
     final int SOMETHING_ELSE_ACTION = 1;
     String MSG_KEY = "message key";
 
     boolean isPermitted = false;
     TextView waitText;
-
 
     /**
      * perform the action in `handleMessage` when the thread calls
@@ -102,7 +101,9 @@ public class SplashScreen extends Activity implements ToastMessage {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.splash2);
+        //setContentView(R.layout.splash2);
+        //setContentView(R.layout.splash_with_guidelines);
+        //pgsBar = (ProgressBar) findViewById(R.id.progressBar);
 
         MobileAds.initialize(this, new OnInitializationCompleteListener() {
             @Override
@@ -120,6 +121,7 @@ public class SplashScreen extends Activity implements ToastMessage {
         WillyShmoApplication.setLatitude(0);
         WillyShmoApplication.setLongitude(0);
 
+        WillyShmoApplication.setCallerActivity(SplashScreen.this);
        // handlerThread.start();
 
         WillyShmoApplication.setWillyShmoApplicationContext(this.getApplicationContext());
@@ -129,83 +131,21 @@ public class SplashScreen extends Activity implements ToastMessage {
             //mSkipWaitCheck = true;
         }
 
-
+        //startMyThread();
         Context willyShmoApplicationContext = getWillyShmoApplicationContext();
 
         Intent myIntent = new Intent(willyShmoApplicationContext, FusedLocationActivity.class);
         startActivity(myIntent);
-
-
 
          // original code replaced with FusedLocationActivity above
         //Intent myIntent = new Intent(willyShmoApplicationContext, MainActivity.class);
         //startActivity(myIntent);
         //finish();
 
-
-        /*
-        WindowManager wm = (WindowManager) this.getSystemService(willyShmoApplicationContext.WINDOW_SERVICE);
-        Display display = wm.getDefaultDisplay();
-        DisplayMetrics metrics = new DisplayMetrics();
-        display.getMetrics(metrics);
-        int width = metrics.widthPixels;
-        int height = metrics.heightPixels;
-        int heightInDp = Math.round(metrics.heightPixels / (metrics.xdpi / DisplayMetrics.DENSITY_DEFAULT));
-        */
-
-        View thisView = findViewById(android.R.id.content).getRootView();
-        thisView.measure(0,0);
-        int thisViewHeight = thisView.getMeasuredHeight();
-
-        /*
-        DisplayMetrics displayMetrics = willyShmoApplicationContext.getResources().getDisplayMetrics();
-        float dpHeight = displayMetrics.heightPixels / displayMetrics.density;
-        float dpWidth = displayMetrics.widthPixels / displayMetrics.density;
-        int heightInDp = Math.round(dpHeight);
-        */
-
-        TextView waitTextArea = findViewById(R.id.waitText);
-        waitTextArea.measure(0, 0);
-        int waitTextMeasuredHeight = waitTextArea.getMeasuredHeight();
-
-
-        ProgressBar progressBar = findViewById(R.id.progressBar);
-        progressBar.measure(0, 0);
-        int progressBarMeasuredHeight = progressBar.getMeasuredHeight();
-
-        //pgsBar = (ProgressBar) findViewById(R.id.pBar);
-        //pgsBar.measure(0, 0);
-        //int pgsBarMeasuredHeight = pgsBar.getMeasuredHeight(); // in pixels?
-
-        //Object waitTextObj = waitText.getLayout();
-
-        Layout myLayout = waitTextArea.getLayout();
-        int myHeight = myLayout.getHeight();
-
-
-
-        //int topMargin = params.topMargin;
-        //int bottomMargin = params.bottomMargin;
-        //int leftMargin = params.leftMargin;
-        //int rightMargin = params.rightMargin;
-        int topMargin = thisViewHeight - (waitTextMeasuredHeight + progressBarMeasuredHeight);
-
-
-
-        //Object obj = waitText.getLayoutParams();
-
-
-
-        //ConstraintLayout.LayoutParams params = (ConstraintLayout.LayoutParams)waitTextArea.getLayoutParams();
-
-//        ConstraintLayout.LayoutParams newLayoutParams = (ConstraintLayout.LayoutParams) toolbar.getLayoutParams();
-        //params.setMargins(0, topMargin, 0, 0); //substitute parameters for left, top, right, bottom
-        //waitTextArea.setLayoutParams(params);
-
-
-        //startMyThread();
+        //setSplashLayout();
     }
 
+    /*
     public void startMyThread() {
                 progressIndex = pgsBar.getProgress();
                 handlerThread = new HandlerThread("MyHandlerThread");
@@ -246,15 +186,24 @@ public class SplashScreen extends Activity implements ToastMessage {
 
     private void doMoreThings() {
         System.out.println("did more things");
+        pgsBar.setProgress(50);
+        System.out.println("did even more things");
     }
+    */
 
+    private void setSplashLayout() {
+        View thisView = findViewById(android.R.id.content).getRootView();
+        thisView.requestLayout();
+        int daBottom = thisView.getBottom();
+        thisView.measure(0,0);
+        int thisViewHeight = thisView.getMeasuredHeight();
+        int daHeight = thisView.getHeight();
+    }
 
     @Override
     public void onStart() {
         super.onStart();
-
        // waitText.setTextColor(Color.RED);
-
 
         GetConfigurationValuesFromDB getConfigurationValuesFromDB = new GetConfigurationValuesFromDB();
         getConfigurationValuesFromDB.execute(this, getApplicationContext(), getResources());
@@ -264,7 +213,6 @@ public class SplashScreen extends Activity implements ToastMessage {
         startActivity(myIntent);
         //mCallerActivity.finish();
         */
-
 
         //new LoadPrizesTask().execute(SplashScreen.this, getApplicationContext(), getResources());
     }
@@ -345,5 +293,4 @@ public class SplashScreen extends Activity implements ToastMessage {
         super.onDestroy();
         //handlerThread.quit();
     }
-
 }

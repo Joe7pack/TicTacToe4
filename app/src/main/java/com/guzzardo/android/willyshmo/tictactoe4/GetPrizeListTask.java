@@ -25,7 +25,8 @@ import static com.guzzardo.android.willyshmo.tictactoe4.WillyShmoApplication.get
  */
 public class GetPrizeListTask extends AsyncTask<Object, Void, String> {
 
-	private ToastMessage mCallerActivity;
+	//private ToastMessage mCallerActivity;
+	private FusedLocationActivity mCallerActivity;
 	private Context applicationContext;
 	private static Resources mResources;
     private static String [] mPrizeImages;
@@ -44,7 +45,8 @@ public class GetPrizeListTask extends AsyncTask<Object, Void, String> {
 	protected String doInBackground(Object... params) {
 		
 		String prizesAvailable = null;
-    	mCallerActivity = (ToastMessage)params[0];
+    	//mCallerActivity = (ToastMessage)params[0];
+		mCallerActivity = (FusedLocationActivity)params[0];
 //    	applicationContext = (Context)params[1]; 
     	mResources = (Resources)params[1];
     	mStartMainActivity = Boolean.valueOf((String)params[2]);
@@ -52,11 +54,15 @@ public class GetPrizeListTask extends AsyncTask<Object, Void, String> {
     	
     	double longitude = WillyShmoApplication.getLongitude();
     	double latitude = WillyShmoApplication.getLatitude();
-    	
+
+		mCallerActivity.setGettingPrizesCalled();
+
+
     	String url = mResources.getString(R.string.domainName) + "/prize/getPrizesByDistance/?longitude=" + longitude + "&latitude=" + latitude;
     	
 		try {
 			prizesAvailable = WebServerInterface.converseWithWebServer(url, null, mCallerActivity, mResources);
+			mCallerActivity.setPrizesRetrievedFromServer();
 		} catch (Exception e) { 
 			writeToLog("GetPrizeListTask", "doInBackground: " + e.getMessage());
 			mCallerActivity.sendToastMessage("Playing without host server");			
@@ -68,19 +74,24 @@ public class GetPrizeListTask extends AsyncTask<Object, Void, String> {
 	protected void onPostExecute(String prizesAvailable) {
 		try {
 			writeToLog("GetPrizeListTask", "onPostExecute called usersOnline: " + prizesAvailable);
-			writeToLog("GetPrizeListTask", "onPostExecute called usersOnline at: "+ new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date()));
+			writeToLog("GetPrizeListTask", "onPostExecute called at: "+ new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date()));
+
+			mCallerActivity.prizeLoadInProgress();
 			if (mStartMainActivity) {
+				//mCallerActivity.setMainActivityCalled();
 				Context willyShmoApplicationContext = getWillyShmoApplicationContext();
 				Intent myIntent = new Intent(willyShmoApplicationContext, MainActivity.class);
 				mCallerActivity.startActivity(myIntent);
 				mCallerActivity.finish();
-
 			}
 			
 			if (prizesAvailable != null && prizesAvailable.length() > 20) {
 				getPrizesAvailable(prizesAvailable);
+				mCallerActivity.setPrizesLoadIntoObjects();
 				convertStringsToBitmaps();
 				savePrizeArrays();
+				mCallerActivity.setPrizesLoadedAllDone();
+				//mCallerActivity.formattingPrizeData();
 			} else {
 				WillyShmoApplication.setPrizeNames(null);
 			}
@@ -98,6 +109,7 @@ public class GetPrizeListTask extends AsyncTask<Object, Void, String> {
     }
 	
     private void getPrizesAvailable(String prizesAvailable) {
+		//mCallerActivity.formattingPrizeData();
     	TreeMap<String, String[]> prizes = parsePrizeList(prizesAvailable);
 
     	Set<String> userKeySet = prizes.keySet(); // this is where the keys (userNames) gets sorted

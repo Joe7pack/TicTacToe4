@@ -15,11 +15,9 @@ android {
         applicationId "com.guzzardo.android.willyshmo.tictactoe4"
         minSdkVersion 16
         targetSdkVersion 29
-        versionCode 14
+        versionCode 18  // always bump this up by 1 for release
         versionName "1.1"
-
         multiDexEnabled true
-
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
@@ -27,7 +25,7 @@ android {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
-            versionNameSuffix '05.10'
+            versionNameSuffix '05.16'  //alwways bump this up by 1 for release
         }
     }
 }

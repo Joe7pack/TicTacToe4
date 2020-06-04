@@ -39,7 +39,7 @@
                 android:shadowDx="2.0"
                 android:shadowDy="2.0"
                 android:shadowRadius="1.8"
-                android:text="Please wait while we load your prize list"
+                android:text="Please wait while we load your prize listxx"
                 android:textColor="@android:color/primary_text_dark"
                 android:textSize="20sp" />
 

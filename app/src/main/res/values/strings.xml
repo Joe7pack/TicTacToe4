@@ -2,7 +2,9 @@
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     
 	<!-- these elements need to be changed before going to production -->
-	<string name="about_1" translatable="false">Willy Shmo\'s Tic Tac Toe Version 1.105.08</string>
+
+	<!-- increment version number to match values found in app/build.gradle -->
+	<string name="about_1" translatable="false">Willy Shmo\'s Tic Tac Toe Version 1.105.16</string>
     <string name="about_2" translatable="false">Copyright © 1986&#8211;2020 &#8211; Tom Volpert and
 		Joe Guzzardo. All rights reserved.</string>
 
@@ -123,11 +125,13 @@
 	<string name="longitude_label">Longitude</string>
 	<string name="last_update_time_label">Last updated at</string>
 	<string name="permission_rationale">To win prizes we would like to know your location</string>
-	<string name="permission_denied_explanation">permission denied</string>
+	<string name="permission_denied_explanation">Location permission denied.</string>
 	<string name="start_updates">location updates started</string>
 	<string name="stop_updates">location updates stopped</string>
 	<string name="location_settings_inadequate_warning">You were already warned once!</string>
     <string name="appbar_scrolling_view_behavior">well behaved</string>
+	<string name="prize_list_wait">Please wait while we load your prize list</string>
+
 
 </resources>
 

@@ -120,7 +120,7 @@ public class LoadPrizesTask extends AsyncTask<Object, Void, Integer> implements 
 				writeToLog("LoadPrizesTask", "onPostExecute called play error: " + mPlayErrorMessage);
 			} else {
 	    		//mCallerActivity.startWaitForPrizesPopup();
-				mCallerActivity.setAsyncMessage2();
+				//mCallerActivity.setAsyncMessage2();
 				writeToLog("LoadPrizesTask", "onPostExecute called, waiting for prizes to load from server at: " + new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date()));
 			}
 		} catch(Exception e) {

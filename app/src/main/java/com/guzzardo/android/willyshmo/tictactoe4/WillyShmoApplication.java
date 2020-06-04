@@ -175,6 +175,11 @@ public class WillyShmoApplication extends MultiDexApplication /* implements Conn
 		mCallerActivity = activity;
 	}
 
+	public static ToastMessage getCallerActivity() {
+		return mCallerActivity;
+	}
+
+
 //	public static LocationClient getLocationClient(boolean startMainActivity) {
 //		mStartMainActivity = startMainActivity;
 //		return mLocationClient;
@@ -369,6 +374,4 @@ public class WillyShmoApplication extends MultiDexApplication /* implements Conn
     static public void setGoogleApiClient(GoogleApiClient googleApiClient) {
         mGoogleApiClient = googleApiClient;
     }
-
-
 }

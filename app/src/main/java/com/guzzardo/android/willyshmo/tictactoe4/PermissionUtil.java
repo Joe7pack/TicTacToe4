@@ -31,7 +31,7 @@ public class PermissionUtil {
         /*
          * If permission is not granted
          * */
-        if (shouldAskPermission(context, permission)){
+        if (shouldAskPermission(context, permission)) {
             /*
              * If permission denied previously
              * */
