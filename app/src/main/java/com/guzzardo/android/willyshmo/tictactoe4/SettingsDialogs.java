@@ -25,8 +25,6 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
-//import android.support.v7.app.AlertDialog;
-import androidx.appcompat.app.AlertDialog;
 import android.text.Editable;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -36,7 +34,11 @@ import android.widget.EditText;
 import android.widget.SeekBar;
 import android.widget.SeekBar.OnSeekBarChangeListener;
 
+import androidx.appcompat.app.AlertDialog;
+
 import com.guzzardo.android.willyshmo.tictactoe4.MainActivity.UserPreferences;
+
+//import android.support.v7.app.AlertDialog;
 
 public class SettingsDialogs extends Activity {
 

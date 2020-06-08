@@ -30,8 +30,6 @@ import android.os.RemoteException;
 import android.provider.Settings.Secure;
 import android.util.Log;
 
-import com.google.android.vending.licensing.ILicenseResultListener;
-import com.google.android.vending.licensing.ILicensingService;
 import com.google.android.vending.licensing.util.Base64;
 import com.google.android.vending.licensing.util.Base64DecoderException;
 

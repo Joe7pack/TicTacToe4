@@ -17,7 +17,9 @@
 package com.google.android.vending.licensing;
 
 import android.util.Log;
+
 import com.google.android.vending.licensing.util.URIQueryDecoder;
+
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.HashMap;

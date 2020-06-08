@@ -16,9 +16,9 @@ import android.os.Message;
 import android.util.Log;
 import android.widget.Toast;
 
-import com.guzzardo.android.willyshmo.tictactoe4.MainActivity.UserPreferences;
-
 import androidx.appcompat.app.AlertDialog;
+
+import com.guzzardo.android.willyshmo.tictactoe4.MainActivity.UserPreferences;
 
 //import android.support.v7.app.AlertDialog;
 

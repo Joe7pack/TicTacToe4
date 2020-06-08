@@ -12,7 +12,6 @@ import android.os.Bundle;
 import android.util.Log;
 
 import com.google.android.gms.common.ConnectionResult;
-//import com.google.android.gms.common.GooglePlayServicesClient;
 import com.google.android.gms.common.GoogleApiAvailability;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.common.api.GoogleApiClient.ConnectionCallbacks;
@@ -22,6 +21,8 @@ import com.google.android.gms.location.LocationServices;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
+
+//import com.google.android.gms.common.GooglePlayServicesClient;
 //import com.google.android.gms.location.LocationClient;
 
 

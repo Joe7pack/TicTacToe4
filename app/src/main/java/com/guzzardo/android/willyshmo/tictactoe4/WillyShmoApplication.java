@@ -1,27 +1,17 @@
 package com.guzzardo.android.willyshmo.tictactoe4;
 
-import android.app.Activity;
 import android.content.Context;
-import android.content.IntentSender;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
-import android.location.Location;
 import android.location.LocationListener;
-import android.location.LocationManager;
-import android.os.Bundle;
 import android.provider.Settings;
 import android.util.Log;
 
-import com.google.android.gms.common.ConnectionResult;
-import com.google.android.gms.common.api.GoogleApiClient;
-import com.google.android.gms.common.api.GoogleApiClient.ConnectionCallbacks;
-import com.google.android.gms.common.api.GoogleApiClient.OnConnectionFailedListener;
-
-import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.HashMap;
-
 import androidx.multidex.MultiDexApplication;
+
+import com.google.android.gms.common.api.GoogleApiClient;
+
+import java.util.HashMap;
 
 //import android.support.multidex.MultiDexApplication;
 //import com.google.android.gms.common.GooglePlayServicesClient;

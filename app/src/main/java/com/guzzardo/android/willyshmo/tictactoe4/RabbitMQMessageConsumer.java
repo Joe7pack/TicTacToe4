@@ -1,7 +1,5 @@
 package com.guzzardo.android.willyshmo.tictactoe4;
 
-import java.io.IOException;
-
 import android.content.res.Resources;
 import android.os.Handler;
 import android.util.Log;
@@ -11,6 +9,8 @@ import com.rabbitmq.client.Connection;
 import com.rabbitmq.client.ConsumerCancelledException;
 import com.rabbitmq.client.QueueingConsumer;
 import com.rabbitmq.client.ShutdownSignalException;
+
+import java.io.IOException;
 
 /**
 *Consumes messages from a RabbitMQ broker

@@ -1,6 +1,8 @@
 package com.guzzardo.android.willyshmo.tictactoe4;
 
 import android.app.Activity;
+import android.app.FragmentManager;
+import android.app.FragmentTransaction;
 import android.app.ListFragment;
 import android.content.Context;
 import android.content.Intent;
@@ -9,10 +11,6 @@ import android.content.res.Resources;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
-//import android.support.v4.app.FragmentManager;
-import android.app.FragmentManager;
-//import android.support.v4.app.FragmentTransaction;
-import android.app.FragmentTransaction;
 import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
@@ -30,6 +28,9 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Set;
 import java.util.TreeMap;
+
+//import android.support.v4.app.FragmentManager;
+//import android.support.v4.app.FragmentTransaction;
 
 //import PlayersOnlineActivity.PlayersOnlineFragment.ListThread;
 

@@ -1,5 +1,6 @@
 package com.guzzardo.android.willyshmo.tictactoe4;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.Resources;
@@ -15,7 +16,6 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
-import android.app.Activity;
 
 import java.math.BigDecimal;
 

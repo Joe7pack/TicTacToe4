@@ -16,10 +16,10 @@ import android.os.Handler;
 import android.os.HandlerThread;
 import android.os.IBinder;
 import android.os.Looper;
-//import android.support.annotation.NonNull;
-//import android.support.v4.app.NotificationCompat;
-import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 import android.util.Log;
+
+import androidx.core.app.NotificationCompat;
+import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationCallback;
@@ -29,7 +29,8 @@ import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 
-import androidx.core.app.NotificationCompat;
+//import android.support.annotation.NonNull;
+//import android.support.v4.app.NotificationCompat;
 
 /**
  * A bound and started service that is promoted to a foreground service when location updates have

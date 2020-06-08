@@ -16,13 +16,13 @@
 
 package com.google.android.vending.licensing.util;
 
-        import android.util.Log;
+import android.util.Log;
 
-        import java.io.UnsupportedEncodingException;
-        import java.net.URI;
-        import java.net.URLDecoder;
-        import java.util.Map;
-        import java.util.Scanner;
+import java.io.UnsupportedEncodingException;
+import java.net.URI;
+import java.net.URLDecoder;
+import java.util.Map;
+import java.util.Scanner;
 
 public class URIQueryDecoder {
     private static final String TAG = "URIQueryDecoder";

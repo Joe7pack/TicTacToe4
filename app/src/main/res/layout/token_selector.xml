@@ -15,15 +15,12 @@
  * limitations under the License.
 -->
 
-<RelativeLayout
-	xmlns:android="http://schemas.android.com/apk/res/android"
-	xmlns:myapp="http://schemas.android.com/apk/res-auto"
-	xmlns:ads="http://schemas.android.com/apk/lib/com.google.ads"	
-	
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:ads="http://schemas.android.com/apk/lib/com.google.ads"
+
     android:orientation="vertical"
     android:layout_width="fill_parent"
-    android:layout_height="fill_parent"
-    >
+    android:layout_height="fill_parent">
 
     <TextView
      	android:id="@+id/token_selector_explanation"

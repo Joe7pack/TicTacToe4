@@ -49,14 +49,10 @@ public class ColorBall {
 				pixels[x] = newColor;
 			}
 		}
-		
 		img.setPixels(pixels, 0, width, 0, 0, width, height);
-		
 	}
 	
 	public ColorBall(Context context, int drawable, Point pointLandscape, Point pointPortrait, int displayMode, int type, int color) {
-//		BitmapFactory.Options opts = new BitmapFactory.Options();
-//      opts.inJustDecodeBounds = true;
         BitmapFactory.Options bitmapOptions = new BitmapFactory.Options();
         bitmapOptions.inMutable = true;
         img = BitmapFactory.decodeResource(context.getResources(), drawable, bitmapOptions); 
@@ -118,7 +114,7 @@ public class ColorBall {
 		return img;
 	}
 
-	 public boolean isDisabled() {
+	public boolean isDisabled() {
 		return mDisabled;
 	}
 
@@ -139,62 +135,5 @@ public class ColorBall {
 	public Rect getRect() {
 		return new Rect(coordX, coordY, 0, 0);
 	}
-	
-//	public void moveBall(int goX, int goY) {
-//		// check the borders, and set the direction if a border has reached
-//		if (coordX > 250){
-//			goRight = false;
-//		}
-//		if (coordX < 0){
-//			goRight = true;
-//		}
-//		if (coordY > 250){
-//			goDown = false;
-//		}
-//		if (coordY < 0){
-//			goDown = true;
-//		}
-//		// move the x and y 
-//		if (goRight){
-//			coordX += goX;
-//		}else
-//		{
-//			coordX -= goX;
-//		}
-//		if (goDown){
-//			coordY += goY;
-//		}else
-//		{
-//			coordY -= goY;
-//		}
-//	}
-	
-//	private void writeObject(java.io.ObjectOutputStream out) throws IOException {
-//		try {
-//			img.compress(Bitmap.CompressFormat.PNG, 0, out);
-//			out.writeInt(coordX);
-//			out.writeInt(coordY);
-//			out.writeInt(id);
-//			out.writeInt(mType);
-//			out.writeBoolean(mDisabled);
-//		} catch (Exception e) {
-//			e.printStackTrace();
-//			throw new IOException(e.toString());
-//		}
-//	}
-//
-//	private void readObject(java.io.ObjectInputStream in) throws IOException, ClassNotFoundException {
-//		try {
-//			img = BitmapFactory.decodeStream(in);
-//			coordX = in.readInt();
-//			coordY = in.readInt();
-//			id = in.readInt();
-//			mType = in.readInt();
-//			mDisabled = in.readBoolean();
-//		} catch (Exception e) {
-//			e.printStackTrace();
-//			throw new IOException(e.toString());
-//		}
-//	}
-	
+
 }

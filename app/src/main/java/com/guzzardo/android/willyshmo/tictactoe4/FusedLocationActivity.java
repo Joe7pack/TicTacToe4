@@ -1,13 +1,8 @@
 package com.guzzardo.android.willyshmo.tictactoe4;
 
-import com.google.android.gms.tasks.Task;
-import com.google.android.material.snackbar.Snackbar;
-
 import android.Manifest;
 import android.app.Activity;
-import android.content.DialogInterface;
 import android.content.Intent;
-import android.content.IntentSender;
 import android.content.pm.PackageManager;
 import android.content.res.Resources;
 import android.graphics.Color;
@@ -20,7 +15,6 @@ import android.os.HandlerThread;
 import android.os.Looper;
 import android.os.Message;
 import android.provider.Settings;
-
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -31,21 +25,14 @@ import android.widget.Toast;
 import androidx.annotation.RequiresApi;
 import androidx.core.app.ActivityCompat;
 import androidx.multidex.BuildConfig;
-import androidx.appcompat.app.AlertDialog;
 
-import com.google.android.gms.common.api.ApiException;
-import com.google.android.gms.common.api.ResolvableApiException;
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationCallback;
 import com.google.android.gms.location.LocationRequest;
 import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.location.LocationSettingsRequest;
-import com.google.android.gms.location.LocationSettingsResponse;
-import com.google.android.gms.location.LocationSettingsStatusCodes;
 import com.google.android.gms.location.SettingsClient;
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.OnFailureListener;
-import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.material.snackbar.Snackbar;
 
 import java.util.Locale;
 
@@ -152,10 +139,7 @@ public class FusedLocationActivity extends Activity implements ToastMessage {
 
     public static ErrorHandler mErrorHandler;
 
-    private boolean isPermitted = false;
-
     private ProgressBar pgsBar;
-    public Handler threadHandler  = new Handler();
     private int progressIndex = 0;
 
     HandlerThread handlerThread;
@@ -169,8 +153,6 @@ public class FusedLocationActivity extends Activity implements ToastMessage {
     final int PRIZES_LOADED = 5;
     final int PRIZE_LOAD_IN_PROGRESS = 6;
     final int PRIZES_READY_TO_DISPLAY = 7;
-
-    private static Resources mResources;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -354,8 +336,6 @@ public class FusedLocationActivity extends Activity implements ToastMessage {
         //mCallerActivity.setStartLocationLookup();
         // we need to set mCallerActivity to Splashscreen to use the message Handler code to set the progress bar
 
-
-
         mFusedLocationClient.getLastLocation().addOnSuccessListener(this, location -> {
             setStartLocationLookup();
             if (location != null) {
@@ -508,10 +488,10 @@ public class FusedLocationActivity extends Activity implements ToastMessage {
                     });
         }
 
-    private class ErrorHandler extends Handler {
+    private static class ErrorHandler extends Handler {
         @Override
         public void handleMessage(Message msg) {
-            Toast.makeText(getApplicationContext(), (String)msg.obj, Toast.LENGTH_LONG).show();
+            Toast.makeText(WillyShmoApplication.getWillyShmoApplicationContext(), (String)msg.obj, Toast.LENGTH_LONG).show();
         }
     }
 
@@ -521,7 +501,6 @@ public class FusedLocationActivity extends Activity implements ToastMessage {
         mErrorHandler.sendMessage(msg);
     }
 
-
     public void startMyThread() {
         progressIndex = pgsBar.getProgress();
         handlerThread = new HandlerThread("MyHandlerThread");
@@ -530,6 +509,7 @@ public class FusedLocationActivity extends Activity implements ToastMessage {
         looperHandler = new Handler(looper)  {
             @Override
             public void handleMessage(Message msg) {
+                //TODO - consolidate this code a little better
                 switch (msg.what) {
                     case START_LOCATION_CHECK_ACTION: {
                         setProgressBar(20);
@@ -539,7 +519,7 @@ public class FusedLocationActivity extends Activity implements ToastMessage {
                         setProgressBar(30);
                         break;
                     }
-                    case START_GET_PRIZES_FROM_SERVER: {
+                    case START_GET_PRIZES_FROM_SERVER: {  //most of the waiting is here
                         setProgressBar(40);
                         break;
                     }

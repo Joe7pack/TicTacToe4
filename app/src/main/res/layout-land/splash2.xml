@@ -27,7 +27,7 @@
 
 
     <TextView
-        android:id="@+id/waitText"
+        android:id="@+id/waiterText"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
 
@@ -60,8 +60,8 @@
         android:minWidth="200dp"
         android:minHeight="10dp"
         android:progress="0"
-        app:layout_constraintStart_toEndOf="@+id/waitText"
-        app:layout_constraintTop_toBottomOf="@+id/waitText"
+        app:layout_constraintStart_toEndOf="@+id/waiterText"
+        app:layout_constraintTop_toBottomOf="@+id/waiterText"
 
         />
 

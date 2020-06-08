@@ -1,34 +1,20 @@
 package com.guzzardo.android.willyshmo.tictactoe4;
 
-import android.Manifest;
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.content.pm.PackageManager;
 import android.content.res.Resources;
-import android.graphics.Color;
-import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
-import android.os.HandlerThread;
-import android.os.Looper;
 import android.os.Message;
-import androidx.constraintlayout.widget.ConstraintLayout;
-import android.text.Layout;
-import android.util.DisplayMetrics;
-import android.view.Display;
 import android.view.MotionEvent;
 import android.view.View;
-import android.view.ViewGroup;
-import android.view.WindowManager;
-import android.widget.Button;
-import android.widget.LinearLayout;
-import android.widget.ProgressBar;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.appcompat.app.AlertDialog;
 
 import com.google.android.gms.ads.MobileAds;
 import com.google.android.gms.ads.initialization.InitializationStatus;
@@ -39,9 +25,6 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
 
-import androidx.annotation.RequiresApi;
-import androidx.appcompat.app.AlertDialog;
-
 import static com.guzzardo.android.willyshmo.tictactoe4.WillyShmoApplication.getWillyShmoApplicationContext;
 
 public class SplashScreen extends Activity implements ToastMessage {
@@ -51,21 +34,10 @@ public class SplashScreen extends Activity implements ToastMessage {
     public static ErrorHandler mErrorHandler;
     private static Resources mResources;
 
-    //private ProgressBar pgsBar;
-    private int i = 0;
-    //private TextView txtView;
-    //public Handler threadHandler  = new Handler();
-    //private int progressIndex = 0;
-
-    //andlerThread handlerThread;
-    //rivate Looper looper;
-    //private Handler looperHandler;
-    final int SOMETHING_ACTION = 0;
-    final int SOMETHING_ELSE_ACTION = 1;
     String MSG_KEY = "message key";
 
-    boolean isPermitted = false;
-    TextView waitText;
+    //boolean isPermitted = false;
+    //TextView waitText;
 
     /**
      * perform the action in `handleMessage` when the thread calls
@@ -122,8 +94,6 @@ public class SplashScreen extends Activity implements ToastMessage {
         WillyShmoApplication.setLongitude(0);
 
         WillyShmoApplication.setCallerActivity(SplashScreen.this);
-       // handlerThread.start();
-
         WillyShmoApplication.setWillyShmoApplicationContext(this.getApplicationContext());
 
         if (mPrizesAvailable) {
@@ -131,90 +101,17 @@ public class SplashScreen extends Activity implements ToastMessage {
             //mSkipWaitCheck = true;
         }
 
-        //startMyThread();
         Context willyShmoApplicationContext = getWillyShmoApplicationContext();
 
         Intent myIntent = new Intent(willyShmoApplicationContext, FusedLocationActivity.class);
         startActivity(myIntent);
-
-         // original code replaced with FusedLocationActivity above
-        //Intent myIntent = new Intent(willyShmoApplicationContext, MainActivity.class);
-        //startActivity(myIntent);
-        //finish();
-
-        //setSplashLayout();
-    }
-
-    /*
-    public void startMyThread() {
-                progressIndex = pgsBar.getProgress();
-                handlerThread = new HandlerThread("MyHandlerThread");
-                handlerThread.start();
-                looper = handlerThread.getLooper();
-                looperHandler = new Handler(looper)  {
-                    @Override
-                    public void handleMessage(Message msg) {
-                        switch (msg.what) {
-                            case SOMETHING_ACTION: {
-                                doSomething();
-                                break;
-                            }
-                            case SOMETHING_ELSE_ACTION:
-                                doMoreThings();
-                                break;
-                            default:
-                                break;
-                        }
-                    }
-                };
-            }
-
-    public void setAsyncMessage() {
-        Message msg = looperHandler.obtainMessage(SOMETHING_ACTION);
-        looperHandler.sendMessage(msg);
-    }
-
-    public void setAsyncMessage2() {
-        Message msg = looperHandler.obtainMessage(SOMETHING_ELSE_ACTION);
-        looperHandler.sendMessage(msg);
-    }
-
-    private void  doSomething() {
-        System.out.println("did something");
-        //handlerThread.quit();
-}
-
-    private void doMoreThings() {
-        System.out.println("did more things");
-        pgsBar.setProgress(50);
-        System.out.println("did even more things");
-    }
-    */
-
-    private void setSplashLayout() {
-        View thisView = findViewById(android.R.id.content).getRootView();
-        thisView.requestLayout();
-        int daBottom = thisView.getBottom();
-        thisView.measure(0,0);
-        int thisViewHeight = thisView.getMeasuredHeight();
-        int daHeight = thisView.getHeight();
     }
 
     @Override
     public void onStart() {
         super.onStart();
-       // waitText.setTextColor(Color.RED);
-
         GetConfigurationValuesFromDB getConfigurationValuesFromDB = new GetConfigurationValuesFromDB();
         getConfigurationValuesFromDB.execute(this, getApplicationContext(), getResources());
-
-        /* no need maybe to run this as an Async task?
-        Intent myIntent = new Intent(this, FusedLocationActivity.class);
-        startActivity(myIntent);
-        //mCallerActivity.finish();
-        */
-
-        //new LoadPrizesTask().execute(SplashScreen.this, getApplicationContext(), getResources());
     }
 
     @Override
@@ -227,8 +124,7 @@ public class SplashScreen extends Activity implements ToastMessage {
 
     private class ErrorHandler extends Handler {
         @Override
-        public void handleMessage(Message msg)
-        {
+        public void handleMessage(Message msg) {
             Toast.makeText(getApplicationContext(), (String)msg.obj, Toast.LENGTH_LONG).show();
         }
     }
@@ -255,7 +151,7 @@ public class SplashScreen extends Activity implements ToastMessage {
                 .setPositiveButton(R.string.alert_dialog_ok, new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int whichButton) {
                         /* User clicked OK so do some stuff */
-                        callGooglePlayServicesUtil(isPlayAvailable.intValue());
+                        callGooglePlayServicesUtil(isPlayAvailable);
                         setSplashActive(false);
                     }
                 })
@@ -291,6 +187,5 @@ public class SplashScreen extends Activity implements ToastMessage {
     @Override
     public void onDestroy() {
         super.onDestroy();
-        //handlerThread.quit();
     }
 }

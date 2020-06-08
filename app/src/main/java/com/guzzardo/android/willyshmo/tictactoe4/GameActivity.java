@@ -39,6 +39,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AlertDialog;
+
 import com.guzzardo.android.willyshmo.tictactoe4.MainActivity.UserPreferences;
 
 import org.json.JSONArray;
@@ -53,8 +55,6 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.Random;
-
-import androidx.appcompat.app.AlertDialog;
 
 public class GameActivity extends Activity implements ToastMessage {
 

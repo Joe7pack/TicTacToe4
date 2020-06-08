@@ -16,12 +16,6 @@
 
 package com.guzzardo.android.willyshmo.tictactoe4;
 
-import java.util.Random;
-
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.res.Resources;
@@ -46,6 +40,12 @@ import android.view.View;
 
 import com.guzzardo.android.willyshmo.tictactoe4.GameActivity.ClientThread;
 import com.guzzardo.android.willyshmo.tictactoe4.MainActivity.UserPreferences;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.util.Random;
 
 //-----------------------------------------------
 

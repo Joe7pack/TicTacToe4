@@ -8,7 +8,7 @@
 
 
     <TextView
-        android:id="@+id/waitText"
+        android:id="@+id/waitingText"
         android:layout_width="fill_parent"
         android:layout_height="40dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -26,7 +26,7 @@
 
 
         <TextView
-            android:id="@+id/waitText2"
+            android:id="@+id/waitingText2"
             android:layout_width="fill_parent"
             android:layout_height="40dp"
 
@@ -42,7 +42,7 @@
 
 
     <ProgressBar
-        android:layout_below="@id/waitText2"
+        android:layout_below="@id/waitingText2"
         android:layout_width="wrap_content"
 
         android:layout_height="40dp" android:indeterminate="true"/>

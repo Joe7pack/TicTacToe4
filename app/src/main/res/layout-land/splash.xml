@@ -2,7 +2,6 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
 
     android:orientation="horizontal">
 
@@ -24,14 +23,14 @@
         <LinearLayout
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
-            android:id="@+id/waitTextArea"
+            android:id="@+id/waiterTextArea"
             android:gravity="bottom"
             android:layout_below="@id/textView"
 
             android:orientation="horizontal">
 
             <TextView
-                android:id="@+id/waitText"
+                android:id="@+id/waiterTextOld2"
                 android:layout_width="fill_parent"
                 android:layout_height="40dp"
 
@@ -48,9 +47,9 @@
     <LinearLayout
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
-        android:id="@+id/waitTextArea2"
+        android:id="@+id/waiterTextArea2"
 
-        android:layout_below="@id/waitText"
+        android:layout_below="@id/waiterTextOld2"
 
         android:orientation="horizontal">
 

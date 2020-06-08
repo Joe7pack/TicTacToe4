@@ -19,7 +19,7 @@
         android:textSize="25sp" />
 
     <TextView
-        android:id="@+id/waitText"
+        android:id="@+id/waiterText"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/textView"
@@ -33,7 +33,7 @@
         android:textSize="20sp" />
 
     <Button
-        android:layout_below="@id/waitText"
+        android:layout_below="@id/waiterText"
         android:id="@+id/splash_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
